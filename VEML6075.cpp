@@ -34,6 +34,15 @@ bool VEML6075::begin() {
   return true;
 }
 
+void VEML6075::sleep(bool mode) {
+	if (mode)
+		this->config |= 1; // Go to sleep
+	else
+		this->config &= 254; // Wake up
+	this->write16(VEML6075_REG_CONF, this->config);
+
+}
+
 // Poll sensor for latest values and cache them
 void VEML6075::poll() {
   this->raw_uva = this->read16(VEML6075_REG_UVA);

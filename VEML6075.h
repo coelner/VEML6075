@@ -81,6 +81,7 @@ class VEML6075 {
 
     VEML6075();
     bool begin();
+    void sleep(bool mode);
 
     void poll();
     float getUVA();
