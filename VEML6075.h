@@ -51,11 +51,12 @@
 // be applied to UVA and UVB readings to get a proper composite index value.
 // Seems pretty hand wavey, though not nearly as annoying as the dark current
 // not being subtracted out by default.
+//02.03.18: application note was changed back in nov '16. Unfortunately vishay did not use a revision index for their documents.
 
-#define VEML6075_UVI_UVA_VIS_COEFF (3.33)
-#define VEML6075_UVI_UVA_IR_COEFF  (2.5)
-#define VEML6075_UVI_UVB_VIS_COEFF (3.66)
-#define VEML6075_UVI_UVB_IR_COEFF  (2.75)
+#define VEML6075_UVI_UVA_VIS_COEFF (2.22) //(3.33)
+#define VEML6075_UVI_UVA_IR_COEFF  (1.33) //(2.5)
+#define VEML6075_UVI_UVB_VIS_COEFF (2.95) //(3.66)
+#define VEML6075_UVI_UVB_IR_COEFF  (1.74) //(2.75)
 
 // Once the above offsets and crunching is done, there's a last weighting
 // function to convert the ADC counts into the UV index values. This handles
@@ -63,9 +64,9 @@
 // by wavelength--UVB is way more dangerous than UVA, due to shorter
 // wavelengths and thus more energy per photon. These values convert the compensated values 
 
-#define VEML6075_UVI_UVA_RESPONSE (1.0 / 909.0)
-#define VEML6075_UVI_UVB_RESPONSE (1.0 / 800.0)
-
+#define VEML6075_UVI_UVA_RESPONSE (0.001461) //(1.0 / 909.0)
+#define VEML6075_UVI_UVB_RESPONSE (0.002591) //(1.0 / 800.0)
+	
 enum veml6075_int_time {
   VEML6075_IT_50MS,
   VEML6075_IT_100MS,
